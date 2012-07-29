@@ -1,0 +1,50 @@
+{
+  "rule": {
+    "shortName": "Nerf Gun Shooter",
+    "description":"Recipe to close a relay and actuate an AVR powered actuator firing a nerf gun",
+    "preconditions": [
+      {
+        "handler": "ninjaChange", 
+        "params": {
+          "guid": "RFID_DEVICE_GUID",
+          "to": "10101000101000001010101"
+        }
+      }
+    ],
+    "actions": [
+      {
+        "handler": "ninjaSendCommand",
+        "params": {
+          "guid": "RELAY_DEVICE_GUID",
+          "da": "0"
+        }
+      },
+      {
+        "handler": "delay",
+        "params": {
+          "guid": "N/A",
+          "delayLength": 3000
+        }
+      },
+      {
+        "handler": "ninjaSendCommand",
+        "params": {
+          "guid": "RELAY_DEVICE_GUID",
+          "da": "1"
+        }
+      },
+      {
+        "handler": "getNinjaSnapshot",
+        "params": {
+          "guid": "CAMERA_DEVICE_GUID"
+        }
+      },
+      {
+        "handler": "sendToDropbox",
+        "params": {
+          "guid": "DROPBOX_DEVICE_GUID"
+        }
+      }
+    ]
+  }
+}
