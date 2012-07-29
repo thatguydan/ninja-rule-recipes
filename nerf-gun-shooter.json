@@ -20,10 +20,10 @@
         }
       },
       {
-        "handler": "delay",
+        "handler": "sleep",
         "params": {
           "guid": "N/A",
-          "delayLength": 3000
+          "sleepLength": 3000
         }
       },
       {
